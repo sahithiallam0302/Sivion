@@ -1,0 +1,103 @@
+{
+  "enquiries": [],
+  "contacts": [],
+  "careers": [],
+  "blog": [
+    {
+      "id": "1",
+      "title": "Java Full Stack Development Trends in 2025",
+      "slug": "java-fullstack-trends-2025",
+      "category": "Java Development",
+      "excerpt": "Explore the latest trends shaping Java full stack development in the enterprise space.",
+      "content": "Java continues to dominate enterprise development with Spring Boot, microservices, and cloud-native architectures leading the way...",
+      "author": "SiviOn Team",
+      "date": "2025-03-01",
+      "status": "published",
+      "image": ""
+    },
+    {
+      "id": "2",
+      "title": "Top 10 SEO Strategies for Business Growth",
+      "slug": "seo-strategies-business-growth",
+      "category": "Digital Marketing",
+      "excerpt": "Learn the proven SEO techniques that drive organic traffic and conversions.",
+      "content": "Search engine optimization is the backbone of digital visibility. Here are the top strategies that work in 2025...",
+      "author": "SiviOn Team",
+      "date": "2025-03-05",
+      "status": "published",
+      "image": ""
+    }
+  ],
+  "portfolio": [
+    {
+      "id": "1",
+      "title": "E-Commerce Platform",
+      "category": "Web Application",
+      "description": "A full-featured e-commerce platform with Java Spring Boot backend and React frontend, including inventory management and payment gateway integration.",
+      "technologies": ["Java", "Spring Boot", "React.js", "MySQL", "AWS"],
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "2",
+      "title": "Corporate Website Redesign",
+      "category": "Website Development",
+      "description": "Modern, SEO-friendly corporate website with responsive design, CMS integration and 40% increased lead conversion rate.",
+      "technologies": ["React.js", "Node.js", "SEO", "Tailwind CSS"],
+      "image": "",
+      "status": "published"
+    },
+    {
+      "id": "3",
+      "title": "Digital Marketing Campaign",
+      "category": "Digital Marketing",
+      "description": "360-degree digital marketing campaign resulting in 3x organic traffic growth using SEO, Google Ads and Social Media.",
+      "technologies": ["Google Ads", "Meta Ads", "SEO", "Analytics"],
+      "image": "",
+      "status": "published"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "1",
+      "title": "Java Full Stack Developer",
+      "type": "Full-time",
+      "location": "Hyderabad (On-site / Remote)",
+      "experience": "0-2 years",
+      "skills": ["Java", "Spring Boot", "React.js", "MySQL"],
+      "description": "We are looking for a passionate Java Full Stack Developer to join our growing engineering team.",
+      "responsibilities": ["Develop RESTful APIs using Spring Boot", "Build React.js frontend components", "Write clean, maintainable code", "Collaborate with design and product teams"],
+      "requirements": ["Bachelor's degree in CS or equivalent", "Knowledge of Java and Spring framework", "Understanding of React.js basics", "Good problem-solving skills"],
+      "freshers": true,
+      "status": "active",
+      "postedDate": "2025-03-01"
+    },
+    {
+      "id": "2",
+      "title": "Digital Marketing Intern",
+      "type": "Internship",
+      "location": "Hyderabad",
+      "experience": "0 years (Freshers Welcome)",
+      "skills": ["SEO", "Social Media", "Content Writing", "Google Analytics"],
+      "description": "We welcome freshers passionate about digital marketing and online growth strategies.",
+      "responsibilities": ["Assist with SEO research and implementation", "Create social media content", "Run Google & Meta ad campaigns", "Track and report campaign performance"],
+      "requirements": ["Basic understanding of digital marketing", "Good communication skills", "Eagerness to learn", "Knowledge of social media platforms"],
+      "freshers": true,
+      "status": "active",
+      "postedDate": "2025-03-05"
+    }
+  ],
+  "siteSettings": {
+    "companyName": "SiviOn Global Technologies",
+    "tagline": "Empowering Businesses with Smart IT & Digital Solutions",
+    "email": "info@sivionglobal.com",
+    "phone": "+91 (XXX) XXX-XXXX",
+    "whatsapp": "+61234567890",
+    "address": "SiviOn Tech Park, Hyderabad, India",
+    "workingHours": "Mon-Fri: 9 AM – 6 PM IST",
+    "linkedin": "#",
+    "twitter": "#",
+    "facebook": "#",
+    "instagram": "#"
+  }
+}
