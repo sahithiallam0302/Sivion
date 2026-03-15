@@ -1,33 +1,37 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-
-const ADMIN_USER = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'sivion@admin123';
+const Admin = require('../models/Admin');
 
 // POST /api/auth/login
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
-  if (!username || !password) {
-    return res.status(400).json({ success: false, message: 'Username and password are required.' });
+  try {
+    const admin = await Admin.findOne({ username });
+    if (!admin) {
+      return res.status(401).json({ success: false, message: 'Invalid credentials.' });
+    }
+
+    const isMatch = await admin.comparePassword(password);
+    if (!isMatch) {
+      return res.status(401).json({ success: false, message: 'Invalid credentials.' });
+    }
+
+    const token = jwt.sign(
+      { id: admin._id, username: admin.username, role: 'admin' },
+      process.env.JWT_SECRET || 'sivion_secret',
+      { expiresIn: '24h' }
+    );
+
+    res.json({ success: true, token, message: 'Login successful.' });
+  } catch (err) {
+    console.error('Login Error:', err);
+    const message = err.name === 'MongooseServerSelectionError' 
+      ? 'Database connection failed. Please check if MongoDB is running.' 
+      : 'Internal server error';
+    res.status(500).json({ success: false, message });
   }
-
-  const isUser = username === ADMIN_USER;
-  const isPass = password === ADMIN_PASS;
-
-  if (!isUser || !isPass) {
-    return res.status(401).json({ success: false, message: 'Invalid credentials.' });
-  }
-
-  const token = jwt.sign(
-    { username, role: 'admin' },
-    process.env.JWT_SECRET || 'sivion_secret',
-    { expiresIn: '8h' }
-  );
-
-  res.json({ success: true, token, message: 'Login successful.' });
 });
 
 // POST /api/auth/verify

@@ -9,10 +9,13 @@ import Portfolio from './pages/Portfolio';
 import Careers from './pages/Careers';
 import Blog from './pages/Blog';
 import ContactUs from './pages/ContactUs';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
+import Disclaimer from './pages/Disclaimer';
 
 function App() {
   return (
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,6 +26,9 @@ function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsConditions />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
         </Routes>
       </Layout>
     </Router>

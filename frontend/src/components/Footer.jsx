@@ -26,10 +26,10 @@ const Footer = () => {
           <ul className="footer-links">
             <li><Link to="/services">Java Full Stack Development</Link></li>
             <li><Link to="/services">Website Design & Development</Link></li>
-            <li><Link to="/services">Cloud & Infrastructure</Link></li>
             <li><Link to="/services">Custom Web Applications</Link></li>
             <li><Link to="/services">Digital Marketing & SEO</Link></li>
-            <li><Link to="/services">Enterprise Maintenance</Link></li>
+            <li><Link to="/portfolio">Portfolio & Case Studies</Link></li>
+            <li><Link to="/services">Maintenance & Support</Link></li>
           </ul>
         </div>
 
@@ -37,11 +37,13 @@ const Footer = () => {
           <h3>Company</h3>
           <ul className="footer-links">
             <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/portfolio">Case Studies</Link></li>
+            <li><Link to="/services">Our Services</Link></li>
+            <li><Link to="/technologies">Technologies</Link></li>
             <li><Link to="/careers">Careers</Link></li>
             <li><Link to="/blog">Blog & Insights</Link></li>
-            <li><Link to="/contact">Contact Us</Link></li>
             <li><Link to="/privacy">Privacy Policy</Link></li>
+            <li><Link to="/terms">Terms & Conditions</Link></li>
+            <li><Link to="/disclaimer">Disclaimer</Link></li>
           </ul>
         </div>
 
@@ -58,7 +60,7 @@ const Footer = () => {
             </li>
             <li style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', margin: 0 }}>
               <div style={{ background: 'rgba(0, 210, 255, 0.1)', padding: '10px', borderRadius: '8px' }}><MapPin size={20} color="var(--accent-cyan)" /></div>
-              <span style={{ fontWeight: 500, color: '#94a3b8', lineHeight: 1.5 }}>SiviOn Global Tech.<br />Hyderabad / Local City</span>
+              <span style={{ fontWeight: 500, color: '#94a3b8', lineHeight: 1.5 }}>SiviOn Global Technologies<br />New Delhi, India</span>
             </li>
           </ul>
         </div>

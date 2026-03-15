@@ -1,28 +1,45 @@
 const express = require('express');
 const router = express.Router();
-const { readDB, writeDB } = require('../utils/db');
+const SiteSettings = require('../models/SiteSettings');
 const authMiddleware = require('../middleware/auth');
 
-// Public: Get site settings (limited)
-router.get('/', (req, res) => {
-  const db = readDB();
-  const { companyName, tagline, email, phone, whatsapp, address, workingHours,
-    linkedin, twitter, facebook, instagram } = db.siteSettings;
-  res.json({ success: true, data: { companyName, tagline, email, phone, whatsapp, address, workingHours, linkedin, twitter, facebook, instagram } });
+// Public: Get site settings
+router.get('/', async (req, res) => {
+  try {
+    let settings = await SiteSettings.findOne();
+    if (!settings) {
+        settings = await SiteSettings.create({}); // Initialize if empty
+    }
+    res.json({ success: true, data: settings });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
 });
 
-// Admin: Get all settings
-router.get('/admin', authMiddleware, (req, res) => {
-  const db = readDB();
-  res.json({ success: true, data: db.siteSettings });
+// Admin: Get settings
+router.get('/admin', authMiddleware, async (req, res) => {
+  try {
+    let settings = await SiteSettings.findOne();
+    if (!settings) {
+        settings = await SiteSettings.create({});
+    }
+    res.json({ success: true, data: settings });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
 });
 
 // Admin: Update settings
-router.put('/admin', authMiddleware, (req, res) => {
-  const db = readDB();
-  db.siteSettings = { ...db.siteSettings, ...req.body };
-  writeDB(db);
-  res.json({ success: true, message: 'Settings saved.', data: db.siteSettings });
+router.put('/admin', authMiddleware, async (req, res) => {
+  try {
+    let settings = await SiteSettings.findOneAndUpdate({}, req.body, { 
+        new: true, 
+        upsert: true 
+    });
+    res.json({ success: true, data: settings });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
 });
 
 module.exports = router;

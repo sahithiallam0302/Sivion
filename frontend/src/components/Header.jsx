@@ -10,11 +10,13 @@ const Header = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Offerings', path: '/services' },
-    { name: 'Stack', path: '/technologies' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Technologies', path: '/technologies' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Careers', path: '/careers' },
-    { name: 'About', path: '/about' }
+    { name: 'Blog', path: '/blog' },
+    { name: 'Contact Us', path: '/contact' }
   ];
 
   return (
@@ -36,7 +38,7 @@ const Header = () => {
               </li>
             ))}
             <li>
-              <Link to="/contact" className="hp-btn hp-btn-primary">Let's Talk</Link>
+              <Link to="/contact" className="hp-btn hp-btn-primary">Get a Quote</Link>
             </li>
           </ul>
         </nav>

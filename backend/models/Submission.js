@@ -1,0 +1,14 @@
+const mongoose = require('mongoose');
+
+const submissionSchema = new mongoose.Schema({
+  type: { type: String, enum: ['contact', 'enquiry'], default: 'contact' },
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String },
+  subject: { type: String },
+  message: { type: String },
+  service: { type: String }, // For enquiries
+  status: { type: String, enum: ['new', 'read', 'archived'], default: 'new' }
+}, { timestamps: true });
+
+module.exports = mongoose.model('Submission', submissionSchema);
