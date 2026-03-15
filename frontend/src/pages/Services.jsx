@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -168,16 +167,12 @@ const Services = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                   whileHover={{ y: -8 }}
-                  className="bg-white/5 backdrop-blur-lg border border-white/10
-                  rounded-xl p-6 transition
-                  hover:border-cyan-400/40
-                  hover:shadow-xl hover:shadow-cyan-500/10"
+                  className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-6 transition hover:border-cyan-400/40 hover:shadow-xl hover:shadow-cyan-500/10"
                 >
 
                   {/* Icon */}
 
-                  <div className={`w - 16 h - 16 rounded - xl flex items - center justify - center
-bg - gradient - to - br ${service.color} shadow - lg mb - 5`}>
+                  <div className={`w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-br ${service.color || 'from-cyan-500 to-blue-500'} shadow-lg mb-5`}>
 
                     <Icon size={30} className="text-white" />
 
@@ -197,7 +192,7 @@ bg - gradient - to - br ${service.color} shadow - lg mb - 5`}>
 
                   {/* Button */}
 
-                  <Link to={`/ services / ${service._id} `}>
+                  <Link to="/contact">
                     <button className="flex items-center gap-2 text-cyan-400 font-semibold group">
                       Learn More
                       <ArrowRight
@@ -233,15 +228,13 @@ bg - gradient - to - br ${service.color} shadow - lg mb - 5`}>
           <div className="flex flex-wrap justify-center gap-4">
 
             <Link to="/contact">
-              <button className="px-8 py-3 bg-cyan-500 hover:bg-cyan-400
-               text-white font-semibold rounded-lg transition">
+              <button className="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-lg transition">
                 Get a Quote
               </button>
             </Link>
 
             <Link to="/portfolio">
-              <button className="px-8 py-3 border border-white/20
-               hover:border-cyan-400 text-white font-semibold rounded-lg transition">
+              <button className="px-8 py-3 border border-white/20 hover:border-cyan-400 text-white font-semibold rounded-lg transition">
                 View Portfolio
               </button>
             </Link>
@@ -258,4 +251,3 @@ bg - gradient - to - br ${service.color} shadow - lg mb - 5`}>
 };
 
 export default Services;
-```
