@@ -8,85 +8,45 @@ import {
   Search,
   Headphones,
   Zap,
-  ArrowRight
+  ArrowRight,
+  Layers,
+  Settings,
+  Database,
+  Shield,
+  Cpu,
 } from "lucide-react";
 
-/* =========================
-   Icon Mapping
-========================= */
-
 const iconMap = {
-  Code: Code,
-  Globe: Globe,
-  BarChart: BarChart,
-  Search: Search,
-  Headphones: Headphones,
-  Zap: Zap
+  Code,
+  Globe,
+  BarChart,
+  Search,
+  Headphones,
+  Zap,
+  Layers,
+  Settings,
+  Database,
+  Shield,
+  Cpu,
 };
 
-/* =========================
-   Default Services
-========================= */
-
-const defaultServices = [
-  {
-    _id: "1",
-    title: "Java Full Stack Development",
-    shortDescription:
-      "End-to-end Java application development using Spring Boot, REST APIs, and modern frontend frameworks.",
-    iconName: "Code",
-    color: "from-blue-500 to-cyan-400"
-  },
-  {
-    _id: "2",
-    title: "Website Design & Development",
-    shortDescription:
-      "Professional business websites with clean UI, mobile-first design, and SEO-ready structure.",
-    iconName: "Globe",
-    color: "from-purple-500 to-pink-400"
-  },
-  {
-    _id: "3",
-    title: "Web Application Development",
-    shortDescription:
-      "Full-featured web applications with scalable architecture and modern frameworks.",
-    iconName: "Zap",
-    color: "from-indigo-500 to-blue-400"
-  },
-  {
-    _id: "4",
-    title: "Digital Marketing Services",
-    shortDescription:
-      "Complete digital marketing solutions including SEO, paid ads, and campaign management.",
-    iconName: "BarChart",
-    color: "from-green-500 to-emerald-400"
-  },
-  {
-    _id: "5",
-    title: "SEO Services",
-    shortDescription:
-      "Technical and on-page SEO strategies to improve rankings and drive organic traffic.",
-    iconName: "Search",
-    color: "from-orange-500 to-yellow-400"
-  },
-  {
-    _id: "6",
-    title: "Website Maintenance & Support",
-    shortDescription:
-      "Ongoing updates, security monitoring, and performance optimization for your website.",
-    iconName: "Headphones",
-    color: "from-cyan-500 to-blue-500"
-  }
+const gradientOptions = [
+  "from-cyan-500 to-blue-600",
+  "from-purple-500 to-pink-500",
+  "from-indigo-500 to-blue-400",
+  "from-green-500 to-emerald-400",
+  "from-orange-500 to-yellow-400",
+  "from-rose-500 to-pink-400",
 ];
 
-const Services = () => {
+const accent = "#06B6D4";
+const primaryBg = "#0A1128";
+const cardBg = "#0D1B3E";
+const secondaryText = "#94A3B8";
 
+const Services = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  /* =========================
-     Fetch Services API
-  ========================= */
 
   useEffect(() => {
     fetch("/api/services")
@@ -95,158 +55,209 @@ const Services = () => {
         if (data.success && data.data.length > 0) {
           setServices(data.data);
         } else {
-          setServices(defaultServices);
+          setServices([]);
         }
       })
-      .catch(() => setServices(defaultServices))
+      .catch(() => setServices([]))
       .finally(() => setLoading(false));
   }, []);
 
   return (
+    <div style={{ background: primaryBg, minHeight: "100vh", color: "#FFFFFF" }}>
 
-    <section className="bg-[#0F172A] pt-40 pb-24 px-6 min-h-screen">
+      {/* ── Breadcrumbs ── */}
+      <div
+        style={{
+          maxWidth: "1280px",
+          margin: "0 auto",
+          padding: "120px 24px 20px",
+          display: "flex",
+          gap: "8px",
+          fontSize: "0.9rem",
+          color: secondaryText,
+        }}
+      >
+        <Link to="/" style={{ color: accent, textDecoration: "none" }}>Home</Link>
+        <span>&gt;</span>
+        <span style={{ color: "#FFFFFF" }}>Services</span>
+      </div>
 
-      <div className="max-w-7xl mx-auto">
-
-        {/* ================= HEADER ================= */}
-
-        <div className="text-center mb-20">
-
-          <span className="text-cyan-400 font-semibold tracking-widest uppercase text-xs">
-            Our Services
-          </span>
-
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-4">
-            Innovative Technology Solutions for
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              {" "}Modern Businesses
-            </span>
-          </h1>
-
-          <p className="text-slate-400 max-w-2xl mx-auto mt-5">
-            At SiviOn Global Technologies we deliver scalable digital solutions
-            including full stack development, website development, digital
-            marketing, and custom web applications designed to accelerate
-            business growth.
-          </p>
-
-          <div className="w-24 h-1 bg-cyan-400 mx-auto mt-8 rounded-full"></div>
-
-        </div>
-
-        {/* ================= LOADING ================= */}
-
-        {loading ? (
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div
-                key={i}
-                className="h-64 bg-white/5 rounded-xl animate-pulse"
-              />
-            ))}
-
+      {/* ── Hero Banner ── */}
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px 80px" }}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{
+            width: "100%",
+            paddingBottom: "32%",
+            borderRadius: "16px",
+            overflow: "hidden",
+            position: "relative",
+            background: "linear-gradient(135deg, #0A1128 0%, #0D2248 100%)",
+          }}
+        >
+          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <img
+              src="/vision-banner.jpg"
+              alt="Services"
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+            />
+            <h1
+              style={{
+                position: "relative",
+                zIndex: 1,
+                fontSize: "min(5rem, 10vw)",
+                fontWeight: 900,
+                color: "#FFFFFF",
+                margin: 0,
+                textShadow: "0 10px 30px rgba(0,0,0,0.8)",
+              }}
+            >
+              Services
+            </h1>
           </div>
+        </motion.div>
+      </div>
 
-        ) : (
-
-          /* ================= SERVICES GRID ================= */
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
+      {/* ── Services Grid ── */}
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px 80px" }}>
+        {loading ? (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "24px" }}>
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} style={{ height: "240px", background: "rgba(255,255,255,0.04)", borderRadius: "16px" }} />
+            ))}
+          </div>
+        ) : services.length > 0 ? (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "24px" }}>
             {services.map((service, index) => {
-
               const Icon = iconMap[service.iconName] || Code;
+              const gradient = service.color || gradientOptions[index % gradientOptions.length];
 
               return (
-
                 <motion.div
                   key={service._id}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  whileHover={{ y: -8 }}
-                  className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-6 transition hover:border-cyan-400/40 hover:shadow-xl hover:shadow-cyan-500/10"
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -6 }}
+                  style={{
+                    background: cardBg,
+                    border: "1px solid rgba(6, 182, 212, 0.12)",
+                    borderRadius: "16px",
+                    padding: "28px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "12px",
+                    transition: "border-color 0.3s",
+                    cursor: "pointer",
+                  }}
                 >
-
-                  {/* Icon */}
-
-                  <div className={`w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-br ${service.color || 'from-cyan-500 to-blue-500'} shadow-lg mb-5`}>
-
-                    <Icon size={30} className="text-white" />
-
+                  <div
+                    className={`bg-gradient-to-br ${gradient}`}
+                    style={{
+                      width: "52px",
+                      height: "52px",
+                      borderRadius: "12px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Icon size={24} color="#ffffff" />
                   </div>
 
-                  {/* Title */}
-
-                  <h3 className="text-xl font-semibold text-white mb-3">
+                  <h3 style={{ fontSize: "17px", fontWeight: 700, color: "#FFFFFF", margin: 0 }}>
                     {service.title}
                   </h3>
 
-                  {/* Description */}
-
-                  <p className="text-slate-400 leading-relaxed mb-6">
+                  <p style={{ fontSize: "14px", color: secondaryText, lineHeight: "1.7", margin: 0, flexGrow: 1 }}>
                     {service.shortDescription}
                   </p>
 
-                  {/* Button */}
-
-                  <Link to="/contact">
-                    <button className="flex items-center gap-2 text-cyan-400 font-semibold group">
-                      Learn More
-                      <ArrowRight
-                        size={18}
-                        className="group-hover:translate-x-1 transition"
-                      />
-                    </button>
+                  <Link
+                    to={`/services/${service._id}`}
+                    style={{ color: accent, fontSize: "14px", fontWeight: 600, display: "flex", alignItems: "center", gap: "4px", textDecoration: "none" }}
+                  >
+                    Get Started <ArrowRight size={14} />
                   </Link>
-
                 </motion.div>
-
               );
-
             })}
-
           </div>
-
+        ) : (
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "80px 0" }}>
+            <div style={{ width: "72px", height: "72px", background: "rgba(255,255,255,0.05)", borderRadius: "16px", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+              <Layers size={32} color={secondaryText} />
+            </div>
+            <h3 style={{ fontSize: "20px", fontWeight: 600, color: "#FFFFFF", marginBottom: "8px" }}>No Services Yet</h3>
+            <p style={{ color: secondaryText, maxWidth: "340px", lineHeight: "1.6" }}>
+              Services will appear here once they have been added via the admin panel.
+            </p>
+          </div>
         )}
-
-        {/* ================= CTA SECTION ================= */}
-
-        <div className="mt-28 text-center">
-
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Start Your Next Digital Project With Us
-          </h2>
-
-          <p className="text-slate-400 max-w-xl mx-auto mb-8">
-            Our team helps businesses build scalable websites, modern
-            applications, and powerful digital marketing strategies.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-4">
-
-            <Link to="/contact">
-              <button className="px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-lg transition">
-                Get a Quote
-              </button>
-            </Link>
-
-            <Link to="/portfolio">
-              <button className="px-8 py-3 border border-white/20 hover:border-cyan-400 text-white font-semibold rounded-lg transition">
-                View Portfolio
-              </button>
-            </Link>
-
-          </div>
-
-        </div>
-
       </div>
 
-    </section>
+      {/* ── CTA Section ── */}
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px 100px" }}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          style={{
+            background: "linear-gradient(135deg, rgba(6,182,212,0.12) 0%, rgba(37,99,235,0.12) 100%)",
+            border: "1px solid rgba(6, 182, 212, 0.15)",
+            borderRadius: "24px",
+            padding: "64px 40px",
+            textAlign: "center",
+          }}
+        >
+          <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, color: "#FFFFFF", marginBottom: "16px" }}>
+            Start Your Next Digital Project
+          </h2>
+          <p style={{ color: secondaryText, fontSize: "16px", maxWidth: "520px", margin: "0 auto 40px", lineHeight: "1.7" }}>
+            Our team helps businesses build scalable websites, modern applications, and powerful digital marketing strategies.
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "16px" }}>
+            <Link to="/contact">
+              <button
+                style={{
+                  padding: "14px 36px",
+                  background: `linear-gradient(to right, ${accent}, #2563EB)`,
+                  color: "#FFFFFF",
+                  fontWeight: 600,
+                  border: "none",
+                  borderRadius: "12px",
+                  cursor: "pointer",
+                  fontSize: "15px",
+                }}
+              >
+                Get a Free Quote
+              </button>
+            </Link>
+            <Link to="/portfolio">
+              <button
+                style={{
+                  padding: "14px 36px",
+                  background: "rgba(255,255,255,0.05)",
+                  color: "#FFFFFF",
+                  fontWeight: 600,
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  borderRadius: "12px",
+                  cursor: "pointer",
+                  fontSize: "15px",
+                }}
+              >
+                View Our Work
+              </button>
+            </Link>
+          </div>
+        </motion.div>
+      </div>
 
+    </div>
   );
 };
 

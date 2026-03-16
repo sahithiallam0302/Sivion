@@ -75,16 +75,17 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, staggerChildren: 0.1 }}
             className="hero-content"
+            style={{ paddingTop: 'clamp(2rem, 15vh, 6rem)' }}
           >
             <motion.h1 
               variants={fadeUp} 
               style={{ 
                 maxWidth: '850px',
-                fontSize: 'clamp(2.5rem, 6vw, 3.75rem)', // text-6xl with fluid scaling
+                fontSize: 'clamp(2.25rem, 8vw, 3.75rem)', 
                 fontWeight: 600,
                 lineHeight: 1.15,
                 letterSpacing: '-1px',
-                marginBottom: '1rem'
+                marginBottom: '1.5rem'
               }}
             >
               Transforming Ideas into<br />Powerful Solutions
@@ -96,14 +97,21 @@ const Home = () => {
             {/* Sub-hero Stat Row */}
             <motion.div 
               variants={fadeUp}
-              style={{ display: 'flex', gap: '20px', marginBottom: '35px', color: 'rgba(255,255,255,0.7)', fontSize: '1rem', fontWeight: 500 }}
+              style={{ 
+                display: 'flex', 
+                flexWrap: 'wrap',
+                gap: '15px 25px', 
+                marginBottom: '35px', 
+                color: 'rgba(255,255,255,0.7)', 
+                fontSize: '0.95rem', 
+                fontWeight: 500 
+              }}
             >
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>50+</span> clients
+                <span style={{ color: 'var(--accent-cyan)', fontWeight: 700 }}>50+</span> clients
               </span>
-              <span style={{ color: 'rgba(255,255,255,0.3)' }}>|</span>
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>12+</span> countries
+                <span style={{ color: 'var(--accent-cyan)', fontWeight: 700 }}>12+</span> countries
               </span>
             </motion.div>
 
@@ -112,8 +120,9 @@ const Home = () => {
               <Link to="/services" className="hp-btn hp-btn-outline" style={{ 
                 color: 'white', 
                 backgroundColor: 'rgba(255, 255, 255, 0.1)', 
-                borderColor: 'rgba(255, 255, 255, 0.2)',
-                backdropFilter: 'blur(5px)'
+                borderColor: 'rgba(255, 255, 255, 0.4)',
+                backdropFilter: 'blur(10px)',
+                fontWeight: 700
               }}>
                 Our Offerings
               </Link>
@@ -131,7 +140,7 @@ const Home = () => {
       <section className="section about-section">
         <div className="about-glow"></div>
         <div className="container">
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '80px', alignItems: 'flex-start' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px 80px', alignItems: 'flex-start' }}>
             
             <div className="about-text-column" style={{ flex: '2 1 500px' }}>
               <motion.div 
@@ -149,7 +158,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                style={{ fontSize: '3.5rem', color: '#ffffff', marginBottom: '40px', lineHeight: 1.1, fontWeight: 600, letterSpacing: '-1.5px' }}
+                style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: '#ffffff', marginBottom: '40px', lineHeight: 1.1, fontWeight: 600, letterSpacing: '-1.5px' }}
               >
                 Execution at scale,<br />built from ground up
               </motion.h2>
@@ -255,7 +264,7 @@ const Home = () => {
               <div className="about-badge-line"></div>
               <span className="about-badge-text">WHAT WE DO</span>
             </div>
-            <h2 style={{ fontSize: '3.5rem', color: '#ffffff', margin: 0, lineHeight: 1.1, fontWeight: 600, letterSpacing: '-1.5px' }}>
+            <h2 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: '#ffffff', margin: 0, lineHeight: 1.1, fontWeight: 600, letterSpacing: '-1.5px' }}>
               End-to-end digital execution.
             </h2>
           </motion.div>
@@ -267,7 +276,7 @@ const Home = () => {
               <h3 style={{ fontSize: '1.4rem', color: 'rgba(255,255,255,0.8)', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>Development</h3>
               <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.05)' }}></div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
               {devServices.map((s, index) => (
                 <motion.div 
                   variants={fadeUp} 
@@ -311,7 +320,7 @@ const Home = () => {
               <h3 style={{ fontSize: '1.4rem', color: 'rgba(255,255,255,0.8)', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>Digital Marketing</h3>
               <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.05)' }}></div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
               {marketingServices.map((s, index) => (
                 <motion.div 
                   variants={fadeUp} 
@@ -370,22 +379,28 @@ const Home = () => {
               <div className="about-badge-line"></div>
               <span className="about-badge-text">WHY PARTNER WITH US?</span>
             </div>
-            <h2 style={{ fontSize: '3.5rem', color: '#ffffff', margin: 0, lineHeight: 1.1, fontWeight: 600, letterSpacing: '-1.5px' }}>
+            <h2 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: '#ffffff', margin: 0, lineHeight: 1.1, fontWeight: 600, letterSpacing: '-1.5px' }}>
               The SiviOn Advantage
             </h2>
           </motion.div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ staggerChildren: 0.1 }}
-            style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
-              gap: '30px 80px' // Tightened row gap to 30px
-            }}
-          >
+            <style>{`
+              @media (max-width: 640px) {
+                .advantages-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+              }
+            `}</style>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ staggerChildren: 0.1 }}
+              className="advantages-grid"
+              style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+                gap: '30px 40px' 
+              }}
+            >
             {advantages.map((adv, i) => (
               <motion.div 
                 variants={fadeUp} 
@@ -469,18 +484,25 @@ const Home = () => {
               <div className="about-badge-line"></div>
               <span className="about-badge-text">OUR PROCESS</span>
             </div>
-            <h2 style={{ fontSize: '3.5rem', color: '#ffffff', margin: 0, lineHeight: 1.1, fontWeight: 600, letterSpacing: '-1.5px' }}>
+            <h2 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: '#ffffff', margin: 0, lineHeight: 1.1, fontWeight: 600, letterSpacing: '-1.5px' }}>
               How We Work
             </h2>
           </motion.div>
 
           {/* 3x2 Grid for Balanced Layout */}
+          <style>{`
+            @media (max-width: 768px) {
+              .process-connector { display: none !important; }
+              .process-grid { gap: 40px 20px !important; }
+            }
+          `}</style>
           <div style={{ position: 'relative', maxWidth: '1000px', margin: '0 auto' }}>
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               transition={{ staggerChildren: 0.15 }}
+              className="process-grid"
               style={{ 
                 display: 'grid', 
                 gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
@@ -501,7 +523,7 @@ const Home = () => {
                 >
                   {/* Horizontal Dashed Connector */}
                   {(i % 3 !== 2 && i < 5) && (
-                    <div style={{ 
+                    <div className="process-connector" style={{ 
                       position: 'absolute', 
                       top: '25px', 
                       left: 'calc(50% + 35px)', 
@@ -514,7 +536,7 @@ const Home = () => {
 
                   {/* Snake/Vertical Connector between Row 1 and Row 2 (Step 3 to 4) */}
                   {i === 2 && (
-                    <div style={{ 
+                    <div className="process-connector" style={{ 
                       position: 'absolute', 
                       top: '50px', 
                       right: 'calc(50%)', 
@@ -598,7 +620,7 @@ const Home = () => {
             <div className="about-badge-line"></div>
             <span className="about-badge-text">TECHNOLOGIES WE USE</span>
           </div>
-          <h2 style={{ fontSize: '3.5rem', color: '#ffffff', marginBottom: '40px', fontWeight: 600, letterSpacing: '-1.5px' }}>
+          <h2 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: '#ffffff', marginBottom: '40px', fontWeight: 600, letterSpacing: '-1.5px' }}>
             Powered by Modern Tech Stack
           </h2>
         </div>
@@ -673,7 +695,7 @@ const Home = () => {
             <div className="about-badge-line"></div>
             <span className="about-badge-text">CLIENT TRUST</span>
           </div>
-          <h2 style={{ fontSize: '3.5rem', color: '#ffffff', marginBottom: '25px', fontWeight: 600, letterSpacing: '-1.5px' }}>Trusted by Enterprises Worldwide</h2>
+          <h2 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: '#ffffff', marginBottom: '25px', fontWeight: 600, letterSpacing: '-1.5px' }}>Trusted by Enterprises Worldwide</h2>
           <p style={{ fontSize: '1.3rem', color: 'rgba(255,255,255,0.6)', marginBottom: '60px', maxWidth: '750px', margin: '0 auto 60px', lineHeight: 1.7 }}>
             We prioritize quality and precision. Our commitment to excellence has earned us the trust of businesses looking for reliable, scalable, and secure digital architectures.
           </p>
@@ -747,7 +769,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            style={{ fontSize: '3.5rem', color: '#ffffff', lineHeight: 1.1, fontWeight: 600, marginBottom: '35px', letterSpacing: '-1.5px', position: 'relative', zIndex: 1, maxWidth: '800px' }}
+            style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: '#ffffff', lineHeight: 1.1, fontWeight: 600, marginBottom: '35px', letterSpacing: '-1.5px', position: 'relative', zIndex: 1, maxWidth: '800px' }}
           >
             Technology is powering the future of business.
           </motion.h2>
@@ -819,7 +841,7 @@ const Home = () => {
             <span className="about-badge-text">READY TO SCALE?</span>
           </div>
 
-          <h2 style={{ fontSize: '3.5rem', color: 'white', marginBottom: '25px', fontWeight: 600, letterSpacing: '-1.5px' }}>
+          <h2 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: 'white', marginBottom: '25px', fontWeight: 600, letterSpacing: '-1.5px' }}>
             Ready to scale your business?
           </h2>
           <p style={{ fontSize: '1.25rem', color: 'rgba(255,255,255,0.6)', marginBottom: '50px', maxWidth: '650px', margin: '0 auto 50px', lineHeight: 1.6 }}>

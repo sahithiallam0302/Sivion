@@ -20,30 +20,55 @@ const Header = () => {
   ];
 
   return (
-    <header className="header">
-      <div className="nav-container">
-        <Link to="/" className="logo">
-          <img src="/sivionlogo.jpeg" alt="SiviOn Global" />
-        </Link>
-        <nav>
-          <ul className="nav-links">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  to={link.path}
-                  style={{ color: location.pathname === link.path ? '#f59e0b' : '' }}
-                >
-                  {link.name}
-                </Link>
+    <>
+      <header className="header">
+        <div className="nav-container">
+          <Link to="/" className="logo">
+            <img src="/sivionlogo.jpeg" alt="SiviOn Global" />
+          </Link>
+          
+          <nav>
+            <ul className="nav-links">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    style={{ color: location.pathname === link.path ? '#f59e0b' : '' }}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/contact" className="hp-btn hp-btn-primary">Get a Quote</Link>
               </li>
-            ))}
-            <li>
-              <Link to="/contact" className="hp-btn hp-btn-primary">Get a Quote</Link>
+            </ul>
+          </nav>
+
+          <button className="mobile-menu-btn" onClick={toggleMenu} aria-label="Toggle Menu">
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Overlay */}
+      <div className={`mobile-overlay ${isMenuOpen ? 'active' : ''}`}>
+        <ul className="mobile-nav-links">
+          {navLinks.map((link) => (
+            <li key={link.name}>
+              <Link to={link.path} onClick={() => setIsMenuOpen(false)}>
+                {link.name}
+              </Link>
             </li>
-          </ul>
-        </nav>
+          ))}
+          <li style={{ marginTop: '20px' }}>
+            <Link to="/contact" className="hp-btn hp-btn-primary" onClick={() => setIsMenuOpen(false)}>
+              Get a Quote
+            </Link>
+          </li>
+        </ul>
       </div>
-    </header>
+    </>
   );
 };
 

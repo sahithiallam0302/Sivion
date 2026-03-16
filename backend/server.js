@@ -14,7 +14,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
 
 // ─── Ensure upload dirs exist ───────────────────────────────────────────────
 ['uploads/resumes', 'uploads/blog', 'uploads/portfolio'].forEach(dir => {
@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 5000;
 });
 
 // ─── Security & Middleware ───────────────────────────────────────────────────
-app.use(helmet({ 
+app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
   contentSecurityPolicy: false // Disable CSP temporarily for easier debugging
 }));
@@ -61,14 +61,14 @@ app.get('/admin/*', (req, res) => {
 });
 
 // ─── API Routes ──────────────────────────────────────────────────────────────
-app.use('/api/auth',      require('./routes/auth'));
-app.use('/api/contact',   require('./routes/contact'));
-app.use('/api/careers',   require('./routes/careers'));
-app.use('/api/blog',      require('./routes/blog'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/contact', require('./routes/contact'));
+app.use('/api/careers', require('./routes/careers'));
+app.use('/api/blog', require('./routes/blog'));
 app.use('/api/portfolio', require('./routes/portfolio'));
-app.use('/api/settings',  require('./routes/settings'));
-app.use('/api/services',  require('./routes/services'));
-app.use('/api/team',      require('./routes/team'));
+app.use('/api/settings', require('./routes/settings'));
+app.use('/api/services', require('./routes/services'));
+app.use('/api/team', require('./routes/team'));
 app.use('/api/testimonials', require('./routes/testimonials'));
 
 // Basic stats endpoint
@@ -84,17 +84,19 @@ app.get('/api/admin/stats', require('./middleware/auth'), async (req, res) => {
         require('./models/Submission').countDocuments({ type: 'enquiry' })
       ])
     ]);
-    
+
     const [totalProjects, totalBlogPosts, activeJobs, totalContacts, newContacts, totalApplications] = counts;
 
-    res.json({ success: true, data: {
-      totalProjects,
-      totalBlogPosts,
-      activeJobs,
-      totalContacts,
-      newContacts,
-      totalApplications
-    }});
+    res.json({
+      success: true, data: {
+        totalProjects,
+        totalBlogPosts,
+        activeJobs,
+        totalContacts,
+        newContacts,
+        totalApplications
+      }
+    });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Server error' });
   }

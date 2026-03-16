@@ -30,7 +30,11 @@ export default function Services() {
       if (editId) { await api.put(`/services/admin/${editId}`, form); toast.success('Service updated!') }
       else { await api.post('/services/admin', form); toast.success('Service added!') }
       setShowForm(false); setForm(empty); setEditId(null); load()
-    } catch { toast.error('Save failed') } finally { setSaving(false) }
+    } catch (err) { 
+      const msg = err.response?.data?.message || 'Save failed';
+      toast.error(msg);
+      console.error('Save error:', err.response?.data);
+    } finally { setSaving(false) }
   }
 
   const del = async () => {
@@ -125,7 +129,7 @@ export default function Services() {
                 </div>
                 <div>
                   <label className="text-sm text-[#94A3B8]">Display Order</label>
-                  <input type="number" value={form.displayOrder} onChange={e => setForm({ ...form, displayOrder: parseInt(e.target.value) })} className="w-full bg-[#0A1128] border border-white/10 text-white px-4 py-2.5 rounded-xl mt-1.5" />
+                  <input type="number" value={form.displayOrder} onChange={e => setForm({ ...form, displayOrder: parseInt(e.target.value) || 0 })} className="w-full bg-[#0A1128] border border-white/10 text-white px-4 py-2.5 rounded-xl mt-1.5" />
                 </div>
               </div>
               <div>

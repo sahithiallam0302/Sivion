@@ -55,4 +55,15 @@ router.delete('/admin/:id', authMiddleware, async (req, res) => {
   }
 });
 
+// Public: Get single service by ID  ← MUST be last to avoid catching /admin/all
+router.get('/:id', async (req, res) => {
+  try {
+    const service = await Service.findById(req.params.id);
+    if (!service || !service.isActive) return res.status(404).json({ success: false, message: 'Service not found' });
+    res.json({ success: true, data: service });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
 module.exports = router;

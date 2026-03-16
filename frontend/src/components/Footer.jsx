@@ -52,11 +52,11 @@ const Footer = () => {
           <ul className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <li style={{ display: 'flex', gap: '15px', alignItems: 'center', margin: 0 }}>
               <div style={{ background: 'rgba(0, 210, 255, 0.1)', padding: '10px', borderRadius: '8px' }}><Phone size={20} color="var(--accent-cyan)" /></div>
-              <span style={{ fontWeight: 500, color: 'white' }}>+91 (XXX) XXX-XXXX</span>
+              <span style={{ fontWeight: 500, color: 'white' }}>+1 (800) 555-0199</span>
             </li>
             <li style={{ display: 'flex', gap: '15px', alignItems: 'center', margin: 0 }}>
               <div style={{ background: 'rgba(0, 210, 255, 0.1)', padding: '10px', borderRadius: '8px' }}><Mail size={20} color="var(--accent-cyan)" /></div>
-              <span style={{ fontWeight: 500, color: 'white' }}>info@sivionglobal.com</span>
+              <span style={{ fontWeight: 500, color: 'white' }}>Hr@sivionglobaltechnologies.Com</span>
             </li>
             <li style={{ display: 'flex', gap: '15px', alignItems: 'flex-start', margin: 0 }}>
               <div style={{ background: 'rgba(0, 210, 255, 0.1)', padding: '10px', borderRadius: '8px' }}><MapPin size={20} color="var(--accent-cyan)" /></div>
